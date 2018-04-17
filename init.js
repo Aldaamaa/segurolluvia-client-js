@@ -7,7 +7,7 @@ const context = createContext('secp256k1')
 const privateKey = context.newRandomPrivateKey()
 const signer = new CryptoFactory(context).newSigner(privateKey)
 
-const output = 'PRIVATE_KEY=${privateKey.asHex()}\nPUBLIC_KEY=${signer.getPublicKey().asHex()}\nREST_API_URL=http://localhost:8080'
+const output = `PRIVATE_KEY=${privateKey.asHex()}\nPUBLIC_KEY=${signer.getPublicKey().asHex()}\nREST_API_URL=http://localhost:8080`
 
 fs.writeFile(path.resolve(__dirname, './.env'), output, (err) => {
   if (err) {
