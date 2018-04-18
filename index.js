@@ -41,5 +41,5 @@ const newPayload = {
 if (input.payloadIsValid(newPayload)) {
   input.submitPayload(newPayload, segurolluviaTransactor)
 } else {
-  console.log('Oops! Your payload failed validation and was not submitted.')
+  console.log(`Oops! Your payload failed validation and was not submitted.`)
 }

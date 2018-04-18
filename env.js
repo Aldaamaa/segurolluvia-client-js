@@ -8,10 +8,10 @@ dotenv.config()
 const env = {
   privateKey: process.env.PRIVATE_KEY || '',
   publicKey: process.env.PUBLIC_KEY || '',
-  restApiUrl: process.env.REST_API_URL || 'http://localhost:8080',
+  restApiUrl: process.env.REST_API_URL || 'http://localhost:8008',
   familyName: 'segurolluvia',
   familyPrefix: leafHash('segurolluvia', 6),
-  familyVersion: '1.0'
+  familyVersion: '1.0.0'
 }
 
 module.exports = env
