@@ -1,10 +1,10 @@
 const { EnclaveFactory } = require('./enclave')
 const { SawtoothClientFactory } = require('./sawtooth-client')
 const argv = require('yargs')
-  .usage('Usage: node $0 --name [string] --verb [set,inc,dec] --value [integer]')
-  .choices('verb', ['set', 'inc', 'dec'])
-  .number('value')
-  .string(['verb', 'name'])
+  .usage('Usage: node $0 --name [string] --verb [buy,calculate,getData] --value [integer]')
+  .choices('verb', ['buy', 'calculate', 'getData'])
+  .number(['bankAccount', 'days', 'refund', 'purchase', 'total'])
+  .string(['verb', 'name', 'mail', 'placeAddress', 'town', 'province', 'checkinDate', 'checkoutDate', 'rainAmount', 'startHour', 'endHour'])
   .describe('name', 'unique identifier for the entry')
   .describe('verb', 'action to take on the entry')
   .describe('value', 'value to pass to the entry')
@@ -31,11 +31,25 @@ const segurolluviaTransactor = segurolluviaClient.newTransactor({
   familyName: env.familyName,
   familyVersion: env.familyVersion
 })
-
+ 
 const newPayload = {
   Verb: argv.verb,
   Name: argv.name,
-  Value: argv.value
+  Mail: argv.mail,
+  BankAccount: argv.bankAccount,
+  PlaceAddress: argv.placeAddress,
+  Town: argv.town,
+  Province: argv.province,
+  CheckinDate: argv.checkinDate,
+  CheckoutDate: argv.checkoutDate,
+  Days: argv.days,
+  RainAmount: argv.rainAmount,
+  StartHour: argv.startHour,
+  EndHour: argv.endHour,
+  Refund: argv.refund,
+  Purchase: argv.purchase,
+  Total: argv.total
+  
 }
 
 if (input.payloadIsValid(newPayload)) {
