@@ -1,7 +1,7 @@
 const input = {
   payloadIsValid: (payload) => {
     //if (valueIsValid(payload.Value) && verbIsValid(payload.Verb) && nameIsValid(payload.Name)) return true
-    if (verbIsValid(payload.Verb) && nameIsValid(payload.Name) && bankAccountIsValid(payload.BanckAccount) && mailIsValid(payload.Mail)
+    if (verbIsValid(payload.Verb) && nameIsValid(payload.Name) && bankAccountIsValid(payload.BankAccount) && mailIsValid(payload.Mail)
 			&& placeAddressIsValid(payload.PlaceAddress) && townIsValid(payload.Town) && provinceIsValid(payload.Province)
 			&& checkinDateIsValid(payload.CheckinDate) && checkoutDateIsValid(payload.CheckoutDate) && daysIsValid(payload.Days)
 			&& rainAmountIsValid(payload.RainAmount) && startHourIsValid(payload.StartHour) && endHourIsValid(payload.EndHour)
