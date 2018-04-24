@@ -12,7 +12,7 @@ const argv = require('yargs')
   .example('node index.js --name foo --verb inc --value 13', 'If `foo` is defined, increment it by 13')
   .example('node index.js --name foo --verb dec --value 7', 'If `foo` is defined, decrement it by 7 (but not below 0)')
   .wrap(null)
-  .demandOption(['name', 'verb', 'value'])
+  .demandOption(['name', 'verb'])
   .help('h')
   .alias('h', 'help')
   .argv
