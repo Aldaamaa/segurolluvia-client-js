@@ -23,13 +23,17 @@ const SawtoothClientFactory = (factoryOptions) => {
     },
     newTransactor(transactorOptions) {
       const _familyNamespace = transactorOptions.familyNamespace || leafHash(transactorOptions.familyName, 6)
-      const _familyVersion = transactorOptions.familyVersion || '1.0.0'
+      const _familyVersion = transactorOptions.familyVersion || '2.0.0'
       const _familyEncoder = transactorOptions.familyEncoder || cbor.encode
       return {
         async post(payload, txnOptions) {
 
           // Encode the payload
           const payloadBytes = _familyEncoder(payload)
+	  console.dir("payload: " + payload);
+          console.log("familyVersion: " + _familyVersion);
+          console.log("familyName: " + transactorOptions.familyName);
+          console.dir("transactorOptions: " + transactorOptions);
 
           // Encode a transaction header
           const transactionHeaderBytes = protobuf.TransactionHeader.encode({
@@ -47,6 +51,7 @@ const SawtoothClientFactory = (factoryOptions) => {
 
           // Sign the txn header. This signature will also be the txn address
           const txnSignature = factoryOptions.enclave.sign(transactionHeaderBytes).toString('hex')
+	  console.log("txnSignature: " + txnSignature);
 
           // Create the transaction
           const transaction = protobuf.Transaction.create({
@@ -69,11 +74,15 @@ const SawtoothClientFactory = (factoryOptions) => {
             headerSignature: batchSignature,
             transactions: transactions
           })
+          console.log("batchSignature: " + batchSignature);
+          console.log("batchHeaderBytes: " + batchHeaderBytes);
+          console.log("transactions: " + transactions);
 
           // Batch the batches into a batch list
           const batchListBytes = protobuf.BatchList.encode({
             batches: [batch]
           }).finish()
+          console.log("batch: " + batch);
 
           // Post the batch list
           try {
@@ -84,6 +93,7 @@ const SawtoothClientFactory = (factoryOptions) => {
               headers: { 'Content-Type': 'application/octet-stream' },
               data: batchListBytes
             })
+            console.log("batch POST executed");
             return res
           } catch (err) {
             console.log('error', err)

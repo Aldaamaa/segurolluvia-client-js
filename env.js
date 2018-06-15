@@ -11,7 +11,7 @@ const env = {
   restApiUrl: process.env.REST_API_URL || 'http://localhost:8008',
   familyName: 'segurolluvia',
   familyPrefix: leafHash('segurolluvia', 6),
-  familyVersion: '1.0.0'
+  familyVersion: '2.0.0'
 }
 
 module.exports = env

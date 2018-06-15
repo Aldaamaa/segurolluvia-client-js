@@ -1,7 +1,7 @@
 const input = {
   payloadIsValid: (payload) => {
     //if (valueIsValid(payload.Value) && verbIsValid(payload.Verb) && nameIsValid(payload.Name)) return true
-    if (verbIsValid(payload.Verb) && nameIsValid(payload.Name) && bankAccountIsValid(payload.BanckAccount) && mailIsValid(payload.Mail)
+    if (verbIsValid(payload.Verb) && nameIsValid(payload.Name) && bankAccountIsValid(payload.BankAccount) && mailIsValid(payload.Mail)
 			&& placeAddressIsValid(payload.PlaceAddress) && townIsValid(payload.Town) && provinceIsValid(payload.Province)
 			&& checkinDateIsValid(payload.CheckinDate) && checkoutDateIsValid(payload.CheckoutDate) && daysIsValid(payload.Days)
 			&& rainAmountIsValid(payload.RainAmount) && startHourIsValid(payload.StartHour) && endHourIsValid(payload.EndHour)
@@ -54,7 +54,8 @@ const nameIsValid = (name) => {
 }
 
 const bankAccountIsValid = (bankAccount) => {
-  if (bankAccount.toString().length <= 16) return true
+  var ba = bankAccount
+  if (ba.toString().length <= 16) return true
   else return false
 }
 
@@ -95,7 +96,7 @@ const daysIsValid = (days) => {
 
 const rainAmountIsValid = (rainAmount) => {
   const trimmed = rainAmount.trim()
-  if (trimmed === 'muydebil' || trimmed === 'debil' || trimmed === 'fuerte' || trimmed === 'muyfuerte' || trimmed === 'torrencial') return true
+  if (trimmed === 'debil' || trimmed === 'moderada' || trimmed === 'fuerte' || trimmed === 'muyfuerte' || trimmed === 'torrencial') return true
   else return false
 }
 
